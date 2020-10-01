@@ -171,6 +171,26 @@ const removeKey = async (key) => {
   console.log(`Removido ${deletion} registros`);
 }
 
+const filterKeyList = (text) => {
+
+  document.getElementById('keyList').childNodes.forEach($el => {
+    if(text === ''){
+      $el.style.display = 'flex';
+
+    }else{
+      text = text.toString().toLowerCase();
+
+      if($el.id.toLowerCase().indexOf(text) === -1){
+        $el.style.display = 'none';
+      }else{
+        $el.style.display = 'flex';
+      }
+    }
+
+
+  })
+}
+
 
 module.exports = {
   init,
@@ -178,5 +198,7 @@ module.exports = {
   handleMenuClick,
   addNewKey,
   removeKey,
-  clearList
+  clearList,
+  updateKeyList,
+  filterKeyList
 }

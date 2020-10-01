@@ -47,7 +47,7 @@
 }
 
 .content {
-    flex: 4;
+    flex: 5;
     background-color: #dfdfdf;
     overflow-y: auto;
 }

@@ -4,8 +4,8 @@ require('electron-reload')(__dirname);
 
 const start = () => {
   const w = new BrowserWindow({
-    width: 1920,
-    height: 1080,
+    width: 1280,
+    height: 720,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true
@@ -13,7 +13,7 @@ const start = () => {
   });
 
   w.loadFile('pages/index.html');
-  w.webContents.openDevTools();
+  // w.webContents.openDevTools();
 
 }
 app.whenReady().then(start);
