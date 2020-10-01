@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redis GUI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../css/global.css" />
+    <link type="text/css" rel="stylesheet" href="../css/index.css" />
+    <script>
+      const {ipcRenderer} = require('electron');
+      const {connectToRedis} = require('../js/Redis');
+    </script>
+</head>
+<body>
+    <div class="indexContainer">
+        <div style="display: flex;align-items: center;flex-direction: column">
+            <img src="../img/redis.svg" alt="Logo" style="width: 100px"/>
+            <h1>Redis GUI</h1>
+        </div>
+        <div style="display: flex;flex-direction: column;margin-top: 20px;">
+            <div>
+                <label for="host">Host</label>
+                <input class="primary" id="host" type="text" placeholder="HOST" value="127.0.0.1" />
+            </div>
+            <div>
+                <label for="port">Port</label>
+                <input class="primary" id="port" type="text" placeholder="PORT" value="6379" />
+            </div>
+            <button class="primary" onclick="connectToRedis()">Conectar</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+  ipcRenderer.on('redisConnected', (listener, t) => {
+    console.log('Redis conectado!');
+    document.location = 'list.html';
+  })
+</script>

@@ -1,0 +1,104 @@
+.mainList li {
+    font-size: 18px;
+    margin: 20px 0;
+    background-color: white;
+    overflow-y: hidden;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.mainList li > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainList li .titleContainer {
+    display: flex;
+    width: 100%;
+}
+
+.mainList li .titleContainer .divTitle{
+    padding: 20px;
+    flex: 1;
+}
+
+.mainList li .titleContainer .divTrash{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.mainList li .contentContainer {
+    white-space: nowrap;
+}
+
+.mainList li div.divListContent {
+    display: none;
+    padding-top: 25px;
+    padding-left: 30px;
+}
+
+.mainList li.expand {
+    min-height: 100px;
+}
+
+.content {
+    flex: 4;
+    background-color: #dfdfdf;
+    overflow-y: auto;
+}
+
+.menu {
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    background: #902626;
+    padding-top: 20px;
+}
+
+.menu > span {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all .1s;
+    padding: 15px;
+}
+
+.menu > span:hover {
+    background-color: #611b1c;
+    cursor: pointer;
+}
+
+.menu .active {
+    background-color: #611b1c;
+}
+
+.homeContainer, .addKeyContainer {
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.addKeyContainer > h1 {
+    margin: 20px
+}
+
+.addKeyContainer form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.addKeyContainer form .primary{
+    width: 400px;
+}
+
+.fa-arrow-right {
+    transition: all .2s;
+}

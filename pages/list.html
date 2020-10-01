@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redis GUI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../css/global.css" />
+    <link type="text/css" rel="stylesheet" href="../css/list.css" />
+    <script src="https://kit.fontawesome.com/bfd2ca5492.js" crossorigin="anonymous"></script>
+    <script>
+        const {init, clickKey, handleMenuClick, addNewKey, removeKey, clearList} = require('../js/List');
+    </script>
+</head>
+<body>
+<div style="height: 100vh">
+    <header style="background: #611b1c">
+        <div style="display: flex;align-items: center;padding: 20px">
+            <img src="../img/redis.svg" alt="Logo" style="width: 80px"/>
+            <h1 style="margin-left: 20px;color: white">Redis GUI</h1>
+        </div>
+    </header>
+    <div style="display: flex;height: 100vh">
+        <section class="menu">
+            <span id="menuHome" onclick="handleMenuClick('home')">Início</span>
+            <span id="menuAddKey" onclick="handleMenuClick('addKey')">Adicionar chave</span>
+            <span id="menuSettings">Configurações</span>
+            <span id="menuQuit">Sair</span>
+        </section>
+        <section class="content">
+            <div id="homeContainer" class="homeContainer">
+                <button class="primary" onclick="clearList()">Limpar</button>
+                <ul id="keyList" class="mainList"></ul>
+            </div>
+            <div id="addKeyContainer" class="addKeyContainer">
+                <h1>Adicionar novas chaves</h1>
+                <form>
+                    <div>
+                        <label for="newKeyName"></label>
+                        <input class="primary" id="newKeyName" type="text" placeholder="Nome da chave" />
+                    </div>
+                    <div>
+                        <input class="primary" id="newKeyValue" type="text" placeholder="Valor" />
+                    </div>
+                    <button type="button" class="primary" onclick="addNewKey()">Adicionar</button>
+
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+</body>
+</html>
+<script>
+  console.log('rodei', Math.random());
+    init();
+</script>
