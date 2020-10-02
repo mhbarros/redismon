@@ -1,4 +1,5 @@
 const {getAllKeys, addKey, getKey, deleteKey, deleteAllKeys} = require('./Redis');
+const {openMessage} = require('./Main');
 
 
 const init = async () => {
@@ -56,9 +57,8 @@ const setKeyList = (keys) => {
   keys.forEach(key => {
     const newItem = getNewListItem(key);
     $list.appendChild(newItem);
-    // html += `<li id="${key}" onclick="clickKey(this)"><div ><i id="arrow-${key}" class="fas fa-arrow-right"></i><span style="margin-left: 10px">${key}</span></div><i id="delete-${key}" class="fas fa-trash" onclick="removeKey(this)"></i></li>`;
+
   })
-  // $list.innerHTML = html;
 }
 
 const addNewKey = async () => {
@@ -66,18 +66,18 @@ const addNewKey = async () => {
   const $value = document.getElementById('newKeyValue');
 
   if(!$key || !$key.value){
-    alert('É necessário escolher um nome para a chave');
+    alert('Defina o nome da chave');
     return;
   }
 
   if(!$value || !$value.value){
-    alert('É necessário escolher um valor para a chave');
+    alert('Define o valor da chave');
     return;
   }
 
   addKey($key.value, $value.value);
   await updateKeyList();
-  console.log('Adicionado com sucesso');
+  openMessage('Adicionado com sucesso');
   $key.value = '';
   $value.value = '';
 }
@@ -158,17 +158,18 @@ const getNewListItem = (key) => {
 }
 
 const clearList = async () => {
+  const currentKeys = await getAllKeys();
   await deleteAllKeys();
   await updateKeyList();
-  console.log('Chaves removidas com sucesso');
+  openMessage(`${currentKeys.length} chave(s) removida(s)`);
 }
 
 const removeKey = async (key) => {
 
-  const deletion = await deleteKey(key);
+  await deleteKey(key);
   await updateKeyList();
 
-  console.log(`Removido ${deletion} registros`);
+  openMessage('Removido com sucesso');
 }
 
 const filterKeyList = (text) => {

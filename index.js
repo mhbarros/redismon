@@ -27,3 +27,8 @@ ipcMain.on('connectToRedis', (listener, args) => {
 
   global.RedisClient = client;
 })
+
+ipcMain.on('logout', (listener, args) => {
+  global.RedisClient = undefined;
+  listener.reply('logout');
+});

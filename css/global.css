@@ -86,3 +86,29 @@ button.primary:hover {
     background-color: #ab2a25;
     outline: none;
 }
+
+.popover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-right: 50px;
+    transition: all .2s ease;
+    display: flex;
+    padding: 20px;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 18px;
+    max-width: 260px;
+
+}
+
+.popover.success {
+    background: #44ca44;
+}
+
+.popover.fail {
+    background: #ab2a25;
+}
