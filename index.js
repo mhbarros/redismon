@@ -1,4 +1,5 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
+const path = require('path');
 const redis = require('redis');
 require('electron-reload')(__dirname);
 
@@ -9,7 +10,8 @@ const start = () => {
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true
-    }
+    },
+    icon: path.join(__dirname, 'img', 'redis.png')
   });
 
   w.loadFile('pages/index.html');
