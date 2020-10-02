@@ -58,7 +58,6 @@
     flex-direction: column;
     display: flex;
     background: #902626;
-    padding-top: 20px;
 }
 
 .menu > span {
@@ -82,6 +81,7 @@
     display: none;
     flex-direction: column;
     padding: 20px;
+    margin-bottom: 100px;
 }
 
 .addKeyContainer > h1 {
