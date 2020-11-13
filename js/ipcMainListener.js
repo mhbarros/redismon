@@ -1,11 +1,25 @@
 const {ipcMain} = require('electron');
-const {createClient} = require('./Redis');
+const redis     = require('redis');
+
+const REPLY_REDIS_CONNECTION = 'redisConnection';
 
 ipcMain.on('connectToRedis', (listener, args) => {
-  const client = createClient(args.port, args.host);
+  const {port, host} = args;
+
+  if(!port){
+    listener.reply(REPLY_REDIS_CONNECTION, {ok: false, msg: 'Digite uma porta'});
+    return;
+  }
+
+  if(!host){
+    listener.reply(REPLY_REDIS_CONNECTION, {ok: false, msg: 'Digite um endereço de host'});
+    return;
+  }
+
+  const client = redis.createClient(port, host);
   client.on('connect', () => {
-    console.log('Conectado');
-    listener.reply('redisConnected', 'Conectado com sucesso');
+
+    listener.reply(REPLY_REDIS_CONNECTION, {ok: true});
   })
 
   global.RedisClient = client;

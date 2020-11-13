@@ -1,10 +1,11 @@
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
-require('electron-reload')(__dirname);
 
 require('./js/ipcMainListener');
 
-const startMainApp = () => {
+require('electron-reload')(__dirname);
+
+const start = () => {
   const mainWindow = new BrowserWindow({
     width: 1280,
     height: 720,
@@ -15,6 +16,7 @@ const startMainApp = () => {
     icon: path.join(__dirname, 'img', 'redis.png')
   });
 
-  mainWindow.loadFile(path.join(__dirname, 'pages', 'index.html'));
+  mainWindow.loadFile('pages/index.html');
+
 }
-app.whenReady().then(startMainApp);
+app.whenReady().then(start);

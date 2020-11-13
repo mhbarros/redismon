@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <title>Redismon</title>
@@ -7,17 +7,17 @@
     <link type="text/css" rel="stylesheet" href="../css/global.css" />
     <link type="text/css" rel="stylesheet" href="../css/index.css" />
     <script>
-      const {ipcRenderer}    = require('electron');
       const {connectToRedis} = require('../js/Redis');
+      require('./../js/ipcRendererListener');
     </script>
 </head>
 <body>
     <div class="indexContainer">
-        <div style="display: flex;align-items: center;flex-direction: column">
-            <img src="../img/redis.svg" alt="Logo" style="width: 100px"/>
+        <div class="logoContainer">
+            <img src="../img/redis.svg" alt="Logo" />
             <h1>Redismon</h1>
         </div>
-        <div style="display: flex;flex-direction: column;margin-top: 20px;">
+        <div class="loginContainer">
             <div>
                 <label for="host">Host</label>
                 <input class="primary" id="host" type="text" placeholder="HOST" value="127.0.0.1" />
@@ -31,9 +31,3 @@
     </div>
 </body>
 </html>
-<script>
-  ipcRenderer.on('redisConnected', (listener, t) => {
-    console.log('Redis conectado!');
-    document.location = 'list.html';
-  })
-</script>
