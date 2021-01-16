@@ -1,5 +1,24 @@
 const {ipcRenderer, remote} = require('electron');
-const redis = require('redis');
+const RedisDatabase = require('redis');
+
+class Redis {
+
+  DEFAULT_HOST = '127.0.0.1';
+  DEFAULT_PORT = 6379;
+
+  constructor(host, port) {
+    if(!host) host = DEFAULT_HOST;
+    if(!port) port = DEFAULT_PORT;
+
+    return RedisDatabase.createClient({
+      host,
+      port,
+    });
+  }
+
+}
+
+
 
 const DEFAULT_HOST        = '127.0.0.1';
 const DEFAULT_PORT        = 6379;
@@ -12,10 +31,8 @@ if(remote && remote.getGlobal){
 
 }
 
-// let client = remote.getGlobal(GLOBAL_REDIS_CLIENT);
-
 const createClient = (host, port) => {
-  return redis.createClient(port, host);
+  return RedisDatabase.createClient(port, host);
 }
 
 const connectToRedis = () => {

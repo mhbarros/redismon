@@ -1,4 +1,4 @@
-const {getAllKeys, addKey, getKey, deleteKey, deleteAllKeys} = require('./Redis');
+const {getAllKeys, addKey, getKey, deleteKey, deleteAllKeys} = require('./services/Redis');
 const {openMessage} = require('./Main');
 
 

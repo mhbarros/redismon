@@ -7,8 +7,8 @@
     <link type="text/css" rel="stylesheet" href="../css/global.css" />
     <link type="text/css" rel="stylesheet" href="../css/index.css" />
     <script>
-      const {connectToRedis} = require('../js/Redis');
-      require('./../js/ipcRendererListener');
+      const {connectToRedis} = require('../js/services/Redis');
+      require(__dirname + '/../js/ipcRendererListener');
     </script>
 </head>
 <body>
