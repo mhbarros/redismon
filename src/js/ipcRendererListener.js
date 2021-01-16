@@ -1,12 +1,6 @@
 const {ipcRenderer} = require('electron');
+const IpcRendererListenerHandler = require('./handler/IpcRendererListenerHandler');
 
-ipcRenderer.on('redisConnection', (listener, t) => {
-  const {ok, msg} = t;
-  if(!ok){
-    alert(msg);
-    return;
-  }
+const ipcRendererListenerHandler = new IpcRendererListenerHandler();
 
-  console.log('Redis conectado!');
-  document.location = 'list.html';
-})
+ipcRenderer.on('redisConnection', ipcRendererListenerHandler.redisConnectionHandler);
