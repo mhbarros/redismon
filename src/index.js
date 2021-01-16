@@ -1,7 +1,7 @@
 const path = require('path');
 const {app, BrowserWindow} = require('electron');
 
-const {WINDOW_CONFIG} = require('./config');
+const {WINDOW_CONFIG} = require('./config/config');
 
 require('./js/ipcMainListener');
 require('electron-reload')(__dirname);

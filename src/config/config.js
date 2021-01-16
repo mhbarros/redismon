@@ -7,7 +7,7 @@ const WINDOW_CONFIG = {
     nodeIntegration: true,
     enableRemoteModule: true
   },
-  icon: path.join(__dirname, 'img', 'redis.png')
+  icon: path.join(__dirname, '..', 'assets', 'img', 'redis.png')
 }
 
 module.exports = {

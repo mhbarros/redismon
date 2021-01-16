@@ -1,7 +1,7 @@
 {
   "name": "Redismon",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "license": "MIT",
   "devDependencies": {
     "@types/redis": "^2.8.27",
@@ -14,7 +14,7 @@
     "redis": "^3.0.2"
   },
   "scripts": {
-    "dev": "electron index.js",
+    "dev": "electron src/index.js",
     "dist:64": "electron-builder --x64"
   }
 }
