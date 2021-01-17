@@ -58,8 +58,10 @@ To use Redismon, you need to have <a href='https://nodejs.org/en/'>NodeJS</a>
 Marcelo Barros - mhbarros99@gmail.com
 
 ##  Screenshots
-<div style="display: grid;grid-template-columns: 1fr 1fr">
-    <img src="build/redismon.gif" alt="Redismon"/>
-    <img src="build/redismon2.png" alt="Redismon key list"/>
-    <img src="build/redismon3.png" alt="Redismon add new key"/>
-</div>
+
+<img src="build/redismon.gif" alt="Redismon"/>
+<p align="center">
+    <img src="build/redismon2.png" alt="Redismon key list" width="400px"/>
+    <img src="build/redismon3.png" alt="Redismon add new key" width="400px"/>
+</p>
+
