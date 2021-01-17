@@ -8,6 +8,6 @@ require('electron-reload')(__dirname);
 
 const start = () => {
   const mainWindow = new BrowserWindow(WINDOW_CONFIG);
-  mainWindow.loadFile(path.resolve(__dirname, 'pages', 'index.html'));
+  mainWindow.loadFile(path.resolve(__dirname, 'pages', 'landing.html'));
 }
 app.whenReady().then(start);

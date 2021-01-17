@@ -1,0 +1,10 @@
+<div style="display: flex;justify-content: space-between">
+    <button class="primary" onclick="new KeyList().clearList()">Limpar</button>
+    <input type="text" id="searchKey" class="primary" placeholder="Procurar chave" style="width: 400px;"
+           onkeyup="new KeyList().filterList(this.value)"/>
+</div>
+<ul id="keyList" class="mainList"></ul>
+
+<script>
+    new KeyList().init();
+</script>

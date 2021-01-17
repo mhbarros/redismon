@@ -6,7 +6,7 @@ class IpcRendererListenerHandler {
       return;
     }
 
-    document.location = 'list.html';
+    document.location = 'index.html';
   }
 }
 

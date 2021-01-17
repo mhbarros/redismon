@@ -34,15 +34,21 @@ const doLogout = () => {
 
 const loadPage = async (pageName, div) => {
 
-  const response = await fetch(`${pageName}.html`);
-  const html = await response.text();
-  const $div = document.getElementById(div);
-  $div.innerHTML = html;
+  try{
+    const response = await fetch(`${pageName}.html`);
+    const html = await response.text();
+    const $div = document.getElementById(div);
 
-  const scripts = $div.getElementsByTagName('script');
-  for(let script of scripts){
-    eval(script.innerText);
+    $div.innerHTML = html;
+
+    const scripts = $div.getElementsByTagName('script');
+    for(let script of scripts){
+      eval(script.innerText);
+    }
+  }catch (e) {
+    alert('Página não encontrada');
   }
+
 }
 
 module.exports = {

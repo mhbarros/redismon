@@ -1,40 +1,61 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Redismon</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../css/global.css"/>
-    <link type="text/css" rel="stylesheet" href="../css/index.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/list.css"/>
+    <script src="../js/KeyList.js" ></script>
+    <script src="https://kit.fontawesome.com/bfd2ca5492.js" crossorigin="anonymous"></script>
     <script>
+        const {handleMenuClick} = require('../js/Menu');
+        const {doLogout} = require('../js/Main');
         const {ipcRenderer} = require('electron');
-        require(__dirname + '/../js/ipcRendererListener');
-
-        const connectToRedis = () => {
-            let host = document.getElementById('host').value;
-            let port = document.getElementById('port').value;
-
-            ipcRenderer.send('connectToRedis', {host, port});
-        }
     </script>
 </head>
 <body>
-<div class="indexContainer">
-    <div class="logoContainer">
-        <img src="../assets/img/redis.svg" alt="Logo"/>
-        <h1>Redismon</h1>
-    </div>
-    <div class="loginContainer">
-        <div>
-            <label for="host">Host</label>
-            <input class="primary" id="host" type="text" placeholder="HOST" value="127.0.0.1"/>
+<div style="height: 100vh">
+    <header style="background: #611b1c">
+        <div style="display: flex;align-items: center;padding: 20px">
+            <img src="../assets/img/redis.svg" alt="Logo" style="width: 80px"/>
+            <h1 style="margin-left: 20px;color: white">Redismon</h1>
         </div>
-        <div>
-            <label for="port">Port</label>
-            <input class="primary" id="port" type="text" placeholder="PORT" value="6379"/>
-        </div>
-        <button class="primary" onclick="connectToRedis()">Conectar</button>
+    </header>
+    <div style="display: flex;height: 100vh">
+        <section class="menu">
+            <span id="menuHome" onclick="handleMenuClick('home');">Início</span>
+            <span id="menuAddKey" onclick="handleMenuClick('addKey')">Adicionar chave</span>
+            <span id="menuSettings" onclick="handleMenuClick('config')" >Configurações</span>
+            <span id="menuQuit" onclick="doLogout()">Sair</span>
+        </section>
+        <section class="content">
+            <div id="homeContainer" class="homeContainer"></div>
+            <div id="addKeyContainer" class="addKeyContainer">
+                <h1>Adicionar chave</h1>
+                <form>
+                    <div>
+                        <label for="newKeyName"></label>
+                        <input class="primary" id="newKeyName" type="text" placeholder="Nome da chave"/>
+                    </div>
+                    <div>
+                        <input class="primary" id="newKeyValue" type="text" placeholder="Valor"/>
+                    </div>
+                    <button type="button" class="primary" onclick="new KeyList().addKey()">Adicionar</button>
+
+                </form>
+            </div>
+            <div id="settingsContainer" class="configContainer"></div>
+        </section>
     </div>
 </div>
+
+
 </body>
 </html>
+<script>
+    handleMenuClick('home');
+    ipcRenderer.on('logout', () => {
+        document.location = 'landing.html';
+    });
+</script>
