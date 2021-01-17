@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Redismon</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="../css/global.css" />
-    <link type="text/css" rel="stylesheet" href="../css/list.css" />
+    <link type="text/css" rel="stylesheet" href="../css/global.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/list.css"/>
     <script src="https://kit.fontawesome.com/bfd2ca5492.js" crossorigin="anonymous"></script>
     <script>
-        const {init, clickKey, handleMenuClick, addNewKey, removeKey, clearList, updateKeyList, filterKeyList} = require('../js/List');
-        const {openMessage, doLogout} = require('../js/Main');
-        const {ipcRenderer, remote}    = require('electron');
+        const {init, handleMenuClick, addNewKey, clearList, updateKeyList, filterKeyList} = require('../js/List');
+        const {doLogout} = require('../js/Main');
+        const {ipcRenderer} = require('electron');
     </script>
 </head>
 <body>
@@ -25,7 +25,7 @@
         <section class="menu">
             <span id="menuHome" onclick="handleMenuClick('home');updateKeyList();">Início</span>
             <span id="menuAddKey" onclick="handleMenuClick('addKey')">Adicionar chave</span>
-            <!--<span id="menuSettings" >Configurações</span>-->
+            <span id="menuSettings" onclick="handleMenuClick('config')" >Configurações</span>
             <span id="menuQuit" onclick="doLogout()">Sair</span>
         </section>
         <section class="content">
@@ -33,7 +33,8 @@
 
                 <div style="display: flex;justify-content: space-between">
                     <button class="primary" onclick="clearList()">Limpar</button>
-                    <input type="text" id="searchKey" class="primary" placeholder="Procurar chave" style="width: 400px;" onkeyup="filterKeyList(this.value)"/>
+                    <input type="text" id="searchKey" class="primary" placeholder="Procurar chave" style="width: 400px;"
+                           onkeyup="filterKeyList(this.value)"/>
                 </div>
                 <ul id="keyList" class="mainList"></ul>
             </div>
@@ -42,15 +43,16 @@
                 <form>
                     <div>
                         <label for="newKeyName"></label>
-                        <input class="primary" id="newKeyName" type="text" placeholder="Nome da chave" />
+                        <input class="primary" id="newKeyName" type="text" placeholder="Nome da chave"/>
                     </div>
                     <div>
-                        <input class="primary" id="newKeyValue" type="text" placeholder="Valor" />
+                        <input class="primary" id="newKeyValue" type="text" placeholder="Valor"/>
                     </div>
                     <button type="button" class="primary" onclick="addNewKey()">Adicionar</button>
 
                 </form>
             </div>
+            <div id="settingsContainer" class="configContainer"></div>
         </section>
     </div>
 </div>
@@ -60,9 +62,7 @@
 </html>
 <script>
     init();
-  /*init();
-  ipcRenderer.on('logout', () => {
-    console.log('Logout');
-    document.location = 'index.html';
-  });*/
+    ipcRenderer.on('logout', () => {
+        document.location = 'index.html';
+    });
 </script>

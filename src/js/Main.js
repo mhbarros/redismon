@@ -32,7 +32,21 @@ const doLogout = () => {
   ipcRenderer.send('logout');
 }
 
+const loadPage = async (pageName, div) => {
+
+  const response = await fetch(`${pageName}.html`);
+  const html = await response.text();
+  const $div = document.getElementById(div);
+  $div.innerHTML = html;
+
+  const scripts = $div.getElementsByTagName('script');
+  for(let script of scripts){
+    eval(script.innerText);
+  }
+}
+
 module.exports = {
   openMessage,
-  doLogout
+  doLogout,
+  loadPage
 }

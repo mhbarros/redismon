@@ -77,7 +77,7 @@
     background-color: #611b1c;
 }
 
-.homeContainer, .addKeyContainer {
+.homeContainer, .addKeyContainer, .configContainer {
     display: none;
     flex-direction: column;
     padding: 20px;

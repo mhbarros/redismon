@@ -1,5 +1,5 @@
 const {remote} = require('electron');
-const {openMessage} = require('./Main');
+const {openMessage, loadPage} = require('./Main');
 
 const init = async () => {
   const client = remote.getGlobal('Clients')[0];
@@ -9,9 +9,9 @@ const init = async () => {
   showHome();
 }
 
-const handleMenuClick = (menuOption) => {
+const handleMenuClick = async (menuOption) => {
   hideAllContents();
-  switch (menuOption){
+  switch (menuOption) {
     case "home":
       showHome();
       break;
@@ -19,8 +19,12 @@ const handleMenuClick = (menuOption) => {
       showAddKey();
       break;
     case "config":
+      showConfig();
       break;
     case "logout":
+
+      doLogout();
+
       break;
   }
 }
@@ -29,12 +33,12 @@ const hideAllContents = () => {
   document.getElementById('homeContainer').style.display = 'none';
   document.getElementById('addKeyContainer').style.display = 'none';
   document.getElementById('homeContainer').style.display = 'none';
-  document.getElementById('homeContainer').style.display = 'none';
+  document.getElementById('settingsContainer').style.display = 'none';
 
   document.getElementById('menuHome').className = '';
   document.getElementById('menuAddKey').className = '';
   document.getElementById('menuHome').className = '';
-  document.getElementById('menuHome').className = '';
+  document.getElementById('menuSettings').className = '';
 }
 
 const showHome = () => {
@@ -45,6 +49,16 @@ const showHome = () => {
 const showAddKey = () => {
   document.getElementById('menuAddKey').className = 'active';
   document.getElementById('addKeyContainer').style.display = 'flex';
+}
+
+const showConfig = async () => {
+  const $config = document.getElementById('settingsContainer');
+  if(!$config.innerText){
+    await loadPage('test', 'settingsContainer');
+  }
+
+  document.getElementById('menuSettings').className = 'active';
+  $config.style.display = 'flex';
 }
 
 const updateKeyList = async () => {
@@ -68,12 +82,12 @@ const addNewKey = async () => {
   const $key = document.getElementById('newKeyName');
   const $value = document.getElementById('newKeyValue');
 
-  if(!$key || !$key.value){
+  if (!$key || !$key.value) {
     alert('Defina o nome da chave');
     return;
   }
 
-  if(!$value || !$value.value){
+  if (!$value || !$value.value) {
     alert('Define o valor da chave');
     return;
   }
@@ -91,7 +105,7 @@ const clickKey = async (elem) => {
   const key = elem.id;
   const $divContent = document.getElementById(`content-${key}`);
 
-  if(elem.className === 'expand'){
+  if (elem.className === 'expand') {
     elem.className = '';
     document.getElementById(`arrow-${key}`).style.transform = 'rotate(0deg)';
     $divContent.style.display = 'none';
@@ -108,7 +122,7 @@ const clickKey = async (elem) => {
 }
 
 const getNewListItem = (key) => {
-  const  LiNewItem = document.createElement('li');
+  const LiNewItem = document.createElement('li');
   LiNewItem.id = key;
 
   const DivLiContainer = document.createElement('div');
@@ -183,15 +197,15 @@ const removeKey = async (key) => {
 const filterKeyList = (text) => {
 
   document.getElementById('keyList').childNodes.forEach($el => {
-    if(text === ''){
+    if (text === '') {
       $el.style.display = 'flex';
 
-    }else{
+    } else {
       text = text.toString().toLowerCase();
 
-      if($el.id.toLowerCase().indexOf(text) === -1){
+      if ($el.id.toLowerCase().indexOf(text) === -1) {
         $el.style.display = 'none';
-      }else{
+      } else {
         $el.style.display = 'flex';
       }
     }
