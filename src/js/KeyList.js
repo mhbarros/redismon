@@ -17,24 +17,24 @@ function KeyList(){
     const $value = document.getElementById('newKeyValue');
 
     if(!$key.value){
-      alert('Adicione um nome para a chave');
+      alert('Add a name to the key');
       return;
     }
 
-    if(!$key.value){
-      alert("Adicione um valor para a chave");
+    if(!$value.value){
+      alert("Add a value to the key");
       return;
     }
 
     const redisClient = remote.getGlobal('Clients')[0];
-    redisClient.addKey($key.value, $key.value);
+    redisClient.addKey($key.value, $value.value);
 
     this.updateKeyList();
 
     $key.value = '';
     $value.value = '';
 
-    alert('Chave adicionada');
+    alert('Key added');
   }
 
   this.setKeyList = (keys) => {
