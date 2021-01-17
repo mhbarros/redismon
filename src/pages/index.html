@@ -26,25 +26,12 @@
         <section class="menu">
             <span id="menuHome" onclick="handleMenuClick('home');">Início</span>
             <span id="menuAddKey" onclick="handleMenuClick('addKey')">Adicionar chave</span>
-            <span id="menuSettings" onclick="handleMenuClick('config')" >Configurações</span>
+            <!--<span id="menuSettings" onclick="handleMenuClick('config')" >Configurações</span>-->
             <span id="menuQuit" onclick="doLogout()">Sair</span>
         </section>
         <section class="content">
             <div id="homeContainer" class="homeContainer"></div>
-            <div id="addKeyContainer" class="addKeyContainer">
-                <h1>Adicionar chave</h1>
-                <form>
-                    <div>
-                        <label for="newKeyName"></label>
-                        <input class="primary" id="newKeyName" type="text" placeholder="Nome da chave"/>
-                    </div>
-                    <div>
-                        <input class="primary" id="newKeyValue" type="text" placeholder="Valor"/>
-                    </div>
-                    <button type="button" class="primary" onclick="new KeyList().addKey()">Adicionar</button>
-
-                </form>
-            </div>
+            <div id="addKeyContainer" class="addKeyContainer"></div>
             <div id="settingsContainer" class="configContainer"></div>
         </section>
     </div>

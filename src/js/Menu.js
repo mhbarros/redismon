@@ -23,12 +23,12 @@ const hideAllContents = () => {
   document.getElementById('homeContainer').style.display = 'none';
   document.getElementById('addKeyContainer').style.display = 'none';
   document.getElementById('homeContainer').style.display = 'none';
-  document.getElementById('settingsContainer').style.display = 'none';
+  /*document.getElementById('settingsContainer').style.display = 'none';*/
 
   document.getElementById('menuHome').className = '';
   document.getElementById('menuAddKey').className = '';
   document.getElementById('menuHome').className = '';
-  document.getElementById('menuSettings').className = '';
+  /*document.getElementById('menuSettings').className = '';*/
 }
 
 const showHome = async () => {
@@ -36,14 +36,18 @@ const showHome = async () => {
   if(!$home.innerHTML.trim()){
     await loadPage('keyList', 'homeContainer');
   }
-
   document.getElementById('menuHome').className = 'active';
   $home.style.display = 'flex';
 }
 
-const showAddKey = () => {
+const showAddKey = async () => {
+  const $addKeyContainer = document.getElementById('addKeyContainer');
+  if(!$addKeyContainer.innerHTML.trim()){
+    await loadPage('addKey', 'addKeyContainer');
+  }
+
   document.getElementById('menuAddKey').className = 'active';
-  document.getElementById('addKeyContainer').style.display = 'flex';
+  $addKeyContainer.style.display = 'flex';
 }
 
 const showConfig = async () => {
