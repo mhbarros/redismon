@@ -61,7 +61,7 @@ Marcelo Barros - mhbarros99@gmail.com
 
 <img src="build/redismon.gif" alt="Redismon"/>
 <p align="center">
-    <img src="build/redismon2.png" alt="Redismon key list" width="400px"/>
-    <img src="build/redismon3.png" alt="Redismon add new key" width="400px"/>
+    <img src="build/redismon2.png" alt="Redismon key list" />
+    <img src="build/redismon3.png" alt="Redismon add new key" />
 </p>
 
