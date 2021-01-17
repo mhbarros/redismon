@@ -14,6 +14,7 @@
     "redis": "^3.0.2"
   },
   "scripts": {
+    "start": "electron src/index.js",
     "dev": "electron src/index.js",
     "dist:64": "electron-builder --x64"
   }
