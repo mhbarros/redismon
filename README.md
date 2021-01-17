@@ -16,7 +16,7 @@
 ## About The Project
 
 <p align="center">
-![Redismon](build/redismon1.png)
+    <img src="build/redismon1.png" alt="Redismon" />
 </p>
 
 Redismon is a GUI for Redis Database, where you can visualize, add and search for keys.
@@ -52,9 +52,12 @@ To use Redismon, you need to have <a href='https://nodejs.org/en/'>NodeJS</a>
    npm start
    ```
 
-
-
 <!-- CONTACT -->
 ## Contact
 
 Marcelo Barros - mhbarros99@gmail.com
+
+##  Screenshots
+<img src="build/redismon.gif" alt="Redismon"/>
+<img src="build/redismon2.png" alt="Redismon key list"/>
+<img src="build/redismon3.png" alt="Redismon add new key"/>
