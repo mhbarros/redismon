@@ -1,3 +1,5 @@
+<img src="build/redismon1.png" alt="Redismon" />
+
 # Redis GUI
 A graphical user interface to manage Redis database
 
@@ -6,4 +8,4 @@ A graphical user interface to manage Redis database
 * Remove keys
 * Add new keys
 
-![RedismonGif](https://github.com/mhbarros/redis-gui/blob/master/redismon1.jpg?raw=true)
+
