@@ -1,5 +1,5 @@
 const {ipcMain} = require('electron');
-const IpcMainListenerHandler = require('./handler/IpcMainListenerHandler');
+const IpcMainListenerHandler = require('./handlers/IpcMainListenerHandler');
 
 const ipcMainListenerHandler = new IpcMainListenerHandler();
 

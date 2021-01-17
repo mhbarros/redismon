@@ -4,30 +4,37 @@
     <meta charset="UTF-8">
     <title>Redismon</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="../css/global.css" />
-    <link type="text/css" rel="stylesheet" href="../css/index.css" />
+    <link type="text/css" rel="stylesheet" href="../css/global.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/index.css"/>
     <script>
-      const {connectToRedis} = require('../js/services/Redis');
-      require(__dirname + '/../js/ipcRendererListener');
+        const {ipcRenderer} = require('electron');
+        require(__dirname + '/../js/ipcRendererListener');
+
+        const connectToRedis = () => {
+            let host = document.getElementById('host').value;
+            let port = document.getElementById('port').value;
+
+            ipcRenderer.send('connectToRedis', {host, port});
+        }
     </script>
 </head>
 <body>
-    <div class="indexContainer">
-        <div class="logoContainer">
-            <img src="../assets/img/redis.svg" alt="Logo" />
-            <h1>Redismon</h1>
-        </div>
-        <div class="loginContainer">
-            <div>
-                <label for="host">Host</label>
-                <input class="primary" id="host" type="text" placeholder="HOST" value="127.0.0.1" />
-            </div>
-            <div>
-                <label for="port">Port</label>
-                <input class="primary" id="port" type="text" placeholder="PORT" value="6379" />
-            </div>
-            <button class="primary" onclick="connectToRedis()">Conectar</button>
-        </div>
+<div class="indexContainer">
+    <div class="logoContainer">
+        <img src="../assets/img/redis.svg" alt="Logo"/>
+        <h1>Redismon</h1>
     </div>
+    <div class="loginContainer">
+        <div>
+            <label for="host">Host</label>
+            <input class="primary" id="host" type="text" placeholder="HOST" value="127.0.0.1"/>
+        </div>
+        <div>
+            <label for="port">Port</label>
+            <input class="primary" id="port" type="text" placeholder="PORT" value="6379"/>
+        </div>
+        <button class="primary" onclick="connectToRedis()">Conectar</button>
+    </div>
+</div>
 </body>
 </html>

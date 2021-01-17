@@ -1,9 +1,10 @@
-const {getAllKeys, addKey, getKey, deleteKey, deleteAllKeys} = require('./services/Redis');
+const {remote} = require('electron');
 const {openMessage} = require('./Main');
 
-
 const init = async () => {
-  const keys = await getAllKeys();
+  const client = remote.getGlobal('Clients')[0];
+  const keys = await client.getAllKeys();
+
   setKeyList(keys);
   showHome();
 }
@@ -47,7 +48,9 @@ const showAddKey = () => {
 }
 
 const updateKeyList = async () => {
-  const keys = await getAllKeys();
+  const redisClient = remote.getGlobal('Clients')[0];
+  const keys = await redisClient.getAllKeys();
+
   setKeyList(keys);
 }
 
@@ -75,7 +78,9 @@ const addNewKey = async () => {
     return;
   }
 
-  addKey($key.value, $value.value);
+  const redisClient = remote.getGlobal('Clients')[0];
+
+  redisClient.addKey($key.value, $value.value);
   await updateKeyList();
   openMessage('Adicionado com sucesso');
   $key.value = '';
@@ -96,11 +101,10 @@ const clickKey = async (elem) => {
   elem.className = 'expand';
   document.getElementById(`arrow-${key}`).style.transform = 'rotate(90deg)';
 
-  let keyValue = await getKey(key);
+  const redisClient = remote.getGlobal('Clients')[0];
 
-  $divContent.innerText = keyValue;
+  $divContent.innerText = await redisClient.getKey(key);
   $divContent.style.display = 'block';
-
 }
 
 const getNewListItem = (key) => {
@@ -158,15 +162,19 @@ const getNewListItem = (key) => {
 }
 
 const clearList = async () => {
-  const currentKeys = await getAllKeys();
-  await deleteAllKeys();
+  const redisClient = remote.getGlobal('Clients')[0];
+
+  const currentKeys = await redisClient.getAllKeys();
+  await redisClient.removeAllKeys();
   await updateKeyList();
   openMessage(`${currentKeys.length} chave(s) removida(s)`);
 }
 
 const removeKey = async (key) => {
 
-  await deleteKey(key);
+  const redisClient = remote.getGlobal('Clients')[0];
+  await redisClient.removeKey(key);
+
   await updateKeyList();
 
   openMessage('Removido com sucesso');
@@ -187,8 +195,6 @@ const filterKeyList = (text) => {
         $el.style.display = 'flex';
       }
     }
-
-
   })
 }
 

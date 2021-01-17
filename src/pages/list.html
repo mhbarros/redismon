@@ -10,7 +10,7 @@
     <script>
         const {init, clickKey, handleMenuClick, addNewKey, removeKey, clearList, updateKeyList, filterKeyList} = require('../js/List');
         const {openMessage, doLogout} = require('../js/Main');
-        const {ipcRenderer}    = require('electron');
+        const {ipcRenderer, remote}    = require('electron');
     </script>
 </head>
 <body>
@@ -59,9 +59,10 @@
 </body>
 </html>
 <script>
-  init();
+    init();
+  /*init();
   ipcRenderer.on('logout', () => {
     console.log('Logout');
     document.location = 'index.html';
-  });
+  });*/
 </script>

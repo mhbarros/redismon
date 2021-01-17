@@ -1,5 +1,5 @@
 const {ipcRenderer} = require('electron');
-const IpcRendererListenerHandler = require('./handler/IpcRendererListenerHandler');
+const IpcRendererListenerHandler = require('./handlers/IpcRendererListenerHandler');
 
 const ipcRendererListenerHandler = new IpcRendererListenerHandler();
 
