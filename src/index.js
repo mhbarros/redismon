@@ -8,6 +8,7 @@ require('electron-reload')(__dirname);
 
 const start = () => {
   const mainWindow = new BrowserWindow(WINDOW_CONFIG);
+  mainWindow.removeMenu();
   mainWindow.loadFile(path.resolve(__dirname, 'pages', 'landing.html'));
 }
 app.whenReady().then(start);
